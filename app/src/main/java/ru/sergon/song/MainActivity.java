@@ -35,11 +35,10 @@ public class MainActivity extends AppCompatActivity {
 
     ListView artists;
     ArrayList<HashMap<String, String>> item = new ArrayList<HashMap<String, String>>();
-    String[] nameAr= new String[1000];
-    String[]genresAr= new String[1000];
-    String[]tracksAr=  new String[1000];
-    String[]smallAr= new String[1000];
-    String[] linkAr = new String[1000];
+    ArrayList<String> nameAr = new ArrayList<String>();
+    ArrayList<String> genresAr = new ArrayList<String>();
+    ArrayList<String> tracksAr=  new ArrayList<String> ();
+    ArrayList<String> smallAr= new ArrayList<String>();
     int count;
     Activity main = this;
     ProgressBar progressBar;
@@ -123,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         name = artist.getString("name");
                         field.put("NAME", name);
-                        nameAr[count]=name;
+                        nameAr.add(count,name);
                     } catch (JSONException ignored){}
 
                     //проверка на наличие жанров
@@ -136,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                         field.put("GENRES", genres);
-                        genresAr[count]=genres;
+                        genresAr.add(count,genres);
                     } catch (JSONException ignored){}
 
                     //проверка на наличие песен
@@ -227,13 +226,12 @@ public class MainActivity extends AppCompatActivity {
                         field.put("ALBUMS",String.valueOf(albums)+al+"•");
                     }catch (JSONException ignored){}
 
-                    tracksAr[count]=String.valueOf(albums)+al+", "+ String.valueOf(tracks)+tr;
+                    tracksAr.add(count,String.valueOf(albums)+al+", "+ String.valueOf(tracks)+tr);
 
                     //проверка на наличие ссылки
                     try {
                         link = artist.getString("link");
                         field.put("LINK",link);
-                        linkAr[count]=link;
                     }catch (JSONException ignored){}
 
 
@@ -250,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             small = cover.getString("small");
                             field.put("SMALL",small);
-                            smallAr[count]=small;
+                            smallAr.add(count,small);
 
 
                         } catch (JSONException ignored){}
@@ -265,11 +263,13 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 try {
-                    CustomListAdapter adapter = new CustomListAdapter(main, nameAr, genresAr, tracksAr, smallAr, linkAr);
+                    CustomListAdapter adapter = new CustomListAdapter(main, nameAr, genresAr, tracksAr, smallAr);
                     artists = (ListView) findViewById(R.id.artistList);
                     if (artists != null) {
                         artists.setAdapter(adapter);
                     }
+
+                    artists.setOverScrollMode(View.OVER_SCROLL_NEVER);
                     progressBar.setVisibility(ProgressBar.INVISIBLE);
 
                     artists.setOnItemClickListener(new AdapterView.OnItemClickListener() {

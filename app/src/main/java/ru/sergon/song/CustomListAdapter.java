@@ -13,13 +13,15 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 
 public class CustomListAdapter extends ArrayAdapter<String> {
 
     private final Activity context;
-    private final String[] nameAr,genresAr,tracksAr, smallAr, linkAr;
+    private final ArrayList<String> nameAr,genresAr,tracksAr, smallAr;
 
-    public CustomListAdapter(Activity context, String[] nameAr,String[] genresAr,String[] tracksAr,String[] smallAr, String[] linkAr) {
+    public CustomListAdapter(Activity context, ArrayList<String> nameAr, ArrayList<String> genresAr, ArrayList<String> tracksAr,ArrayList<String> smallAr) {
         super(context, R.layout.item, nameAr);
 
         this.context=context;
@@ -27,7 +29,6 @@ public class CustomListAdapter extends ArrayAdapter<String> {
         this.genresAr=genresAr;
         this.tracksAr=tracksAr;
         this.smallAr=smallAr;
-        this.linkAr=linkAr;
     }
 
     public View getView(int position,View view,ViewGroup parent) {
@@ -42,11 +43,11 @@ public class CustomListAdapter extends ArrayAdapter<String> {
         TextView tracks = (TextView) rowView.findViewById(R.id.tracks);
         //загружаем картинку по ссылке, если картинка уже была загружена, берём её из кэша
         Picasso.with(context)
-                .load(smallAr[position])
+                .load(smallAr.get(position))
                 .into(imageView);
-        name.setText(nameAr[position]);
-        genres.setText(genresAr[position]);
-        tracks.setText(tracksAr[position]);
+        name.setText(nameAr.get(position));
+        genres.setText(genresAr.get(position));
+        tracks.setText(tracksAr.get(position));
         return rowView;
 
     }
