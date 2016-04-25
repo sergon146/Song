@@ -2,28 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    android:layout_height="wrap_content">
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/ImgSmall"
+        android:id="@+id/imgSmall"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_margin="15dp"
         android:src="@android:drawable/btn_star_big_on" />
-    android:layout_margin="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/name"
-        android:layout_alignTop="@+id/ImgSmall"
+        android:layout_alignTop="@+id/imgSmall"
         android:layout_alignLeft="@+id/genres"
         android:layout_alignStart="@+id/genres"
-        android:layout_toRightOf="@+id/ImgSmall"
-        android:layout_toEndOf="@+id/ImgSmall"
+        android:layout_toRightOf="@+id/imgSmall"
+        android:layout_toEndOf="@+id/imgSmall"
         android:layout_marginTop="10dp"
         android:textColor="@color/abc_input_method_navigation_guard" />
 
@@ -32,8 +30,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/genres"
         android:layout_below="@+id/name"
-        android:layout_toRightOf="@+id/ImgSmall"
-        android:layout_toEndOf="@+id/ImgSmall"
+        android:layout_toRightOf="@+id/imgSmall"
+        android:layout_toEndOf="@+id/imgSmall"
         android:layout_marginTop="5dp"
         android:textColor="@color/dim_foreground_material_dark" />
 
@@ -41,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/albums"
-        android:layout_alignBottom="@+id/ImgSmall"
+        android:layout_alignBottom="@+id/imgSmall"
         android:layout_alignLeft="@+id/genres"
         android:layout_alignStart="@+id/genres"
         android:textColor="@color/dim_foreground_material_dark" />
@@ -49,7 +47,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tracks"
+        android:id="@+id/tracksText"
         android:textColor="@color/dim_foreground_material_dark"
         android:layout_alignTop="@+id/albums"
         android:layout_toRightOf="@+id/albums"
