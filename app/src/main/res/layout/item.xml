@@ -4,14 +4,16 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:id="@+id/imgSmall"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_margin="15dp"
-        android:src="@android:drawable/btn_star_big_on" />
+        android:src="@android:drawable/ic_menu_camera"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,7 +25,8 @@
         android:layout_toRightOf="@+id/imgSmall"
         android:layout_toEndOf="@+id/imgSmall"
         android:layout_marginTop="10dp"
-        android:textColor="@color/abc_input_method_navigation_guard" />
+        android:textColor="@color/abc_input_method_navigation_guard"
+        android:textSize="17sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,20 +41,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/albums"
+        android:id="@+id/tracks"
         android:layout_alignBottom="@+id/imgSmall"
         android:layout_alignLeft="@+id/genres"
         android:layout_alignStart="@+id/genres"
         android:textColor="@color/dim_foreground_material_dark" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tracksText"
-        android:textColor="@color/dim_foreground_material_dark"
-        android:layout_alignTop="@+id/albums"
-        android:layout_toRightOf="@+id/albums"
-        android:layout_toEndOf="@+id/albums"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="26dp" />
 </RelativeLayout>

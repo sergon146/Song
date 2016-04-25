@@ -18,7 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FullActivity"></activity>
+        <activity android:name=".FullActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.sergon.song.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
