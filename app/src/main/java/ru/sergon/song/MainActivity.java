@@ -7,6 +7,8 @@ package ru.sergon.song;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +30,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(ProgressBar.VISIBLE);
-        new ParseTask().execute();
         context = getApplicationContext();
+        new ParseTask().execute();
     }
 
     private class ParseTask extends AsyncTask<Void, Void, String> {
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(Void... params) {
             // получаем данные с внешнего ресурса
             try {
+
                 URL url = new URL("http://cache-novosibrt05.cdn.yandex.net/download.cdn.yandex.net/mobilization-2016/artists.json");
 
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -97,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
             int id, tracks, albums;
             JSONArray genresA;
             JSONObject cover,artist;
-
             HashMap<String, String> field;
 
 
@@ -263,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 try {
-                    CustomListAdapter adapter = new CustomListAdapter(main, nameAr, genresAr, tracksAr, smallAr);
+                    CustomListAdapter adapter = new CustomListAdapter(main,R.layout.item, nameAr, genresAr, tracksAr, smallAr);
                     artists = (ListView) findViewById(R.id.artistList);
                     if (artists != null) {
                         artists.setAdapter(adapter);
@@ -295,6 +298,7 @@ public class MainActivity extends AppCompatActivity {
     public void onProgressClick(View view){
         Toast.makeText(context,"Подождите, идёт загрузка!", Toast.LENGTH_LONG).show();
     }
+
 
 }
 
